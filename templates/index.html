@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Soybean Seed Classifier</title>
+  
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+<style>
+  .hero {
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background-image: url("{{ url_for('static', filename='images/soybeans-2039638_640.jpg') }}");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.hero-overlay {
+  background-color: rgba(0,0,0,0.5);
+  padding: 2rem 3rem;
+  text-align: center;
+  border-radius: 10px;
+  max-width: 90%;
+}
+
+.hero-overlay h1 {
+  color: #fff;
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.hero-overlay p {
+  color: #ddd;
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.cta-btn {
+  padding: 0.8rem 2rem;
+  background-color: #27ae60;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+  display: inline-block;
+}
+
+.cta-btn:hover {
+  background-color: #1e874b;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero-overlay {
+    padding: 1.5rem 2rem;
+  }
+
+  .hero-overlay h1 {
+    font-size: 2rem;
+  }
+
+  .hero-overlay p {
+    font-size: 1rem;
+  }
+
+.about-image {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  justify-content: center;
+}
+
+.about-image img {
+  max-width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+}
+</style>
+</head>
+</head>
+<body>
+  
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-overlay">
+      <h1>Soybean Seed Classification</h1>
+      <p>Seed quality analysis for farmers, companies, and inspectors</p>
+      <a href="#upload-section" class="cta-btn">Get Started</a>
+    </div>
+  </section>
+
+  <!-- Header / Navbar -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">Soybean Seed Classifier</div>
+      <ul class="nav-links">
+        <li><a href="#upload-section">Upload</a></li>
+        <li><a href="#about-section">About</a></li>
+        <li><a href="#categories-section">Categories</a></li>
+        <li><a href="#oil-calc-section">Calculator</a></li>
+        <li><a href="#how-section">How It Works</a></li>
+        <li><a href="#benefits-section">Benefits</a></li>
+        <li><a href="#users-section">Who Can Use It</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Upload Section -->
+  <section id="upload-section" class="upload-section">
+  <h2>Upload Soybean Seed Image</h2>
+
+  <div id="imagePreviewContainer">
+    <img id="imagePreview" src="" alt="Image Preview" style="display:none;">
+  </div>
+
+  <input type="file" id="imageUpload" accept="image/*">
+
+  <div class="upload-buttons">
+    <button type="button" id="predictBtn" class="btn">Predict Category</button>
+    <button type="button" id="removeBtn" class="btn remove">Remove Image</button>
+  </div>
+
+  <div id="predictionResult" aria-live="polite"></div>
+</section>
+
+
+  <!-- Categories Section -->
+<section id="categories-section" class="categories-section">
+  <h2>Soybean Seed Categories</h2>
+  <div class="categories-grid">
+    <div class="category-card">
+      <i class="fas fa-leaf icon"></i>
+      <h3>Broken soybean</h3>
+      <p>Physically damaged or split into pieces during harvesting, handling, or processing.</p>
+    </div>
+    <div class="category-card">
+      <i class="fas fa-seedling icon"></i>
+      <h3>Imature soybeans</h3>
+      <p>Seeds are not fully developed or ripened before harvesting.</p>
+    </div>
+    <div class="category-card">
+      <i class="fas fa-adjust icon"></i>
+      <h3>Intact soybeans</h3>
+      <p>Healthy, fully developed, and premium quality.</p>
+    </div>
+    <div class="category-card">
+      <i class="fas fa-water icon"></i>
+      <h3>Skin-damaged soybeans</h3>
+      <p>Seeds are superficial damage to their outer coat (seed coat) due to mechanical impact, pests, or disease.</p>
+    </div>
+    <div class="category-card">
+      <i class="fas fa-virus icon"></i>
+      <h3>Spotted soybeans</h3>
+      <p>Seeds affected by fungus, moisture,ungal infection, pests, or environmental factors.</p>
+    </div>
+  </div>
+</section>
+
+  <!-- About Section -->
+<section id="about-section" class="about-section">
+  <h2>About Soybean Seeds</h2>
+  <div class="about-container">
+    <div class="about-text">
+      <p>
+        Soybean is one of the most important crops in the world. 
+        The quality of seeds affects crop yield. Poor quality seeds 
+        can reduce production and cause losses. This classifier helps 
+        in identifying different types of soybean seeds such as 
+        healthy, broken, discolored, shriveled, and moldy — ensuring 
+        better decision-making for farmers and seed companies.
+      </p>
+
+      <h3>Origin of Soybean</h3>
+      <p>
+        <strong>Scientific name:</strong> Glycine max<br>
+        <strong>Family:</strong> Fabaceae (the legume family)<br>
+        <strong>Origin:</strong> Soybean is native to East Asia, primarily China. 
+        It has been cultivated for thousands of years—records suggest over 3,000–5,000 years ago.<br>
+        <strong>Spread:</strong> From China, soybeans spread to Korea and Japan, and later to other parts of the world, including India, the USA, Brazil, and Europe.
+      </p>
+
+      <h3>Formation and Domestication</h3>
+      <p>
+        <strong>Wild ancestor:</strong> Soybean was derived from a wild species called Glycine soja.<br>
+        <strong>Domestication traits:</strong>
+          <li>Early farmers selected for traits like:Larger seeds (easier to harvest and more nutritious)</li>
+          <li>Higher yield</li>
+          <li>Reduced seed dispersal (so seeds stayed on the plant until harvested)</li>
+        </ul><br>
+        Over generations, selective breeding transformed the small, tough wild seeds into the cultivated soybean we know today.
+        
+      </p>  
+    </div>
+    <div class="about-image">
+      <img src="{{ url_for('static', filename='images/about.jpg') }}" alt="Soybean Plant">
+  </div>
+</section>
+
+<!-- Oil Yield Explanation -->
+  <div class="oil-info">
+    <h3>About Soybean Oil Yield</h3><br>
+    <p>The exact oil yield depends on:</p>
+    <ul>
+      <li><strong>Variety of soybean:</strong> Some varieties are bred for higher oil content.</li>
+      <li><strong>Growing conditions:</strong> Climate, soil quality, and fertilizer usage affect oil levels.</li>
+      <li><strong>Harvest maturity:</strong> Immature beans have lower oil content.</li>
+      <li><strong>Processing method:</strong> Mechanical pressing extracts ~90% of oil; solvent extraction can extract up to ~99%.</li>
+    </ul>
+
+    <p>These are approximate ranges since physical damage and maturity directly impact oil yield:</p>
+
+    <table class="oil-table">
+      <thead>
+        <tr>
+          <th>Soybean Type</th>
+          <th>Expected Oil Content (% by weight)</th>
+          <th>Reasoning</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Intact soybeans</td>
+          <td>18–21% (Highest)</td>
+          <td>Fully mature and undamaged seeds retain maximum oil.</td>
+        </tr>
+        <tr>
+          <td>Broken soybeans</td>
+          <td>17–20%</td>
+          <td>Slight loss due to physical damage; oil % stays similar.</td>
+        </tr>
+        <tr>
+          <td>Immature soybeans</td>
+          <td>12–16% (Lowest)</td>
+          <td>Immature seeds haven’t fully developed storage lipids.</td>
+        </tr>
+        <tr>
+          <td>Skin-damaged soybeans</td>
+          <td>16–19%</td>
+          <td>Slightly reduced due to exposure and moisture absorption.</td>
+        </tr>
+        <tr>
+          <td>Spotted soybeans</td>
+          <td>17–20%</td>
+          <td>Cosmetic spots don’t drastically lower oil; slight quality drop possible.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><strong>Key insight:</strong> Intact soybeans are ideal for oil extraction. Physical damage impacts oil quality (oxidation risk, impurities) more than percentage.</p>
+  </div>
+</section>
+
+  <!-- Oil Calculator Section -->
+<section id="oil-calc-section" class="oil-calc-section">
+  <h2>Quick Calculator</h2>
+
+  <label for="batch">Batch weight (kg)</label>
+  <input id="batch" type="number" min="1" value="100" />
+
+  <label for="type">Select seed type</label>
+  <select id="type">
+    <option value="intact">Intact soybeans (18–21%)</option>
+    <option value="broken">Broken soybeans (17–20%)</option>
+    <option value="immature">Immature soybeans (12–16%)</option>
+    <option value="skin">Skin-damaged soybeans (16–19%)</option>
+    <option value="spotted">Spotted soybeans (17–20%)</option>
+  </select>
+
+  <button id="calc" class="btn">Estimate oil</button>
+  <div id="result" class="result" aria-live="polite"></div>
+</section>
+
+
+
+  <!-- How It Works Section -->
+  <section id="how-section" class="info-section">
+    <h2>How It Works</h2>
+    <div class="cards">
+      <div class="card"><i class="fas fa-upload"></i> Upload soybean seed image</div>
+      <div class="card"><i class="fas fa-microchip"></i> Deep Learning model analyzes the seed</div>
+      <div class="card"><i class="fas fa-check-circle"></i> Predicts seed quality category</div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section id="benefits-section" class="info-section">
+    <h2>Benefits</h2>
+    <div class="cards">
+      <div class="card"><i class="fas fa-clock"></i> Saves time for farmers & seed companies</div>
+      <div class="card"><i class="fas fa-seedling"></i> Improves crop yield</div>
+      <div class="card"><i class="fas fa-recycle"></i> Reduces wastage</div>
+      <div class="card"><i class="fas fa-mobile-alt"></i> Works anywhere with mobile or computer</div>
+    </div>
+  </section>
+
+  <!-- Who Can Use It Section -->
+  <section id="users-section" class="info-section">
+    <h2>Who Can Use It</h2>
+    <div class="cards">
+      <div class="card"><i class="fas fa-tractor"></i> Farmers</div>
+      <div class="card"><i class="fas fa-industry"></i> Seed Companies</div>
+      <div class="card"><i class="fas fa-landmark"></i> Agriculture Departments</div>
+      <div class="card"><i class="fas fa-user-check"></i> Quality Inspectors</div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Soybean Seed Classifier</p>
+  </footer>
+
+  <script>
+  const ranges = {
+    intact: [18, 21],
+    broken: [17, 20],
+    immature: [12, 16],
+    skin: [16, 19],
+    spotted: [17, 20]
+  };
+
+  const batchEl = document.getElementById('batch');
+  const typeEl = document.getElementById('type');
+  const calcBtn = document.getElementById('calc');
+  const resultEl = document.getElementById('result');
+
+  calcBtn.addEventListener('click', () => {
+    const batch = Number(batchEl.value);
+    if (!batch || batch <= 0) {
+      resultEl.textContent = '⚠️ Enter a valid batch weight!';
+      resultEl.style.color = 'red';
+      return;
+    }
+
+    const [minPct, maxPct] = ranges[typeEl.value];
+    const minKg = batch * (minPct / 100);
+    const maxKg = batch * (maxPct / 100);
+    resultEl.innerHTML = `<strong>Estimated oil:</strong> ${minKg.toFixed(2)} – ${maxKg.toFixed(2)} kg (from ${batch} kg)`;
+    resultEl.style.color = 'green';
+  });
+</script>
+
+
+</body>
+</html>

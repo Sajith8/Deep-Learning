@@ -1,0 +1,601 @@
+/* ===================== */
+/* General Styles */
+/* ===================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+
+body {
+  background-color: #f7f7f7;
+  color: #333;
+  line-height: 1.6;
+}
+
+h1, h2, h3 {
+  color: #2c3e50;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* ===================== */
+/* Navbar */
+/* ===================== */
+header {
+  width: 100%;
+  background-color: #ffffffcc;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+
+.navbar .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #27ae60;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-links li a {
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-links li a:hover {
+  color: #27ae60;
+}
+
+/* ===================== */
+/* Hero Section */
+/* ===================== */
+.hero {
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background-image: url("{{ url_for('static', filename='images/soybeans-2039638_640.jpg') }}");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.hero-overlay {
+  background-color: rgba(0,0,0,0.5);
+  padding: 2rem 3rem;
+  text-align: center;
+  border-radius: 10px;
+  max-width: 90%;
+}
+
+.hero-overlay h1 {
+  color: #fff;
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.hero-overlay p {
+  color: #ddd;
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.cta-btn {
+  padding: 0.8rem 2rem;
+  background-color: #27ae60;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+  display: inline-block;
+}
+
+.cta-btn:hover {
+  background-color: #1e874b;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero-overlay {
+    padding: 1.5rem 2rem;
+  }
+
+  .hero-overlay h1 {
+    font-size: 2rem;
+  }
+
+  .hero-overlay p {
+    font-size: 1rem;
+  }
+}
+
+
+/* ===================== */
+/* Upload Section */
+/* ===================== */
+.upload-section {
+  padding: 4rem 2rem;
+  text-align: center;
+  background-color: #fff;
+}
+
+#imagePreviewContainer {
+  margin: 2rem 0;
+  width: 300px;
+  height: 300px;
+  border: 2px dashed #27ae60;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+#imagePreview {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+#imageUpload {
+  margin-top: 1rem;
+}
+
+#predictBtn {
+  padding: 0.8rem 2rem;
+  background-color: #27ae60;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+#predictBtn:hover {
+  background-color: #1e874b;
+}
+
+#predictionResult {
+  margin-top: 1.5rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+.upload-buttons {
+  margin-top: 1rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+#removeBtn {
+  padding: 0.8rem 2rem;
+  background-color: #e74c3c;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+#removeBtn:hover {
+  background-color: #c0392b;
+}
+
+
+/* General Styles */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+oil-info table {
+  background-color: #fff; /* table stays white for readability */
+}
+
+/* Calculator Result Box */
+#oil-calc-section .result {
+  background-color: #ffffff; /* keep result box white for contrast */
+  border: 1px solid #27ae60; /* matches theme */
+}
+
+/* ===================== */
+/* Categories Section */
+/* ===================== */
+.categories-section {
+  padding: 4rem 2rem;
+  background-color: #f0f9f5;
+  text-align: center;
+}
+
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.category-card {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.category-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.category-card .icon {
+  font-size: 2.5rem;
+  color: #27ae60;
+  margin-bottom: 1rem;
+}
+
+/* ===================== */
+/* About Section */
+/* ===================== */
+.about-section {
+  padding: 4rem 2rem;
+  background-color: #fff;
+}
+
+.about-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-text {
+  flex: 1;
+  min-width: 300px;
+}
+
+.about-text p {
+  margin-bottom: 2rem;
+  line-height: 1.7;
+}
+
+.about-highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.about-highlights .highlight {
+  flex: 1;
+  min-width: 180px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #f0f9f5;
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+}
+
+.about-highlights .highlight i {
+  color: #27ae60;
+  font-size: 1.5rem;
+}
+
+.about-image {
+  flex: 1;
+  min-width: 300px;
+}
+
+/* oil-calc-section */
+
+/* ===================== */
+/* Oil Info Section */
+/* ===================== */
+/* ===================== */
+/* Oil Info Section - Exact About Card Style */
+/* ===================== */
+.oil-info {
+  background-color: #ffffff; /* same as About card */
+  border-radius: 10px;
+  padding: 25px;
+  margin: 40px auto;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.8s forwards;
+  animation-delay: 0.2s;
+  line-height: 1.7;
+  color: #333;
+}
+
+.oil-info h3 {
+  font-size: 2rem;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+}
+
+.oil-info p {
+  margin-bottom: 1rem;
+}
+
+.oil-info ul {
+  list-style-type: disc;
+  margin-left: 20px;
+  margin-bottom: 1rem;
+}
+
+.oil-info ul li {
+  margin-bottom: 8px;
+}
+
+.oil-info strong {
+  color: #27ae60;
+}
+
+/* Table matches card style */
+.oil-info table {
+  width: 100%;
+  border-collapse: collapse; /* remove extra gaps */
+  margin-top: 1rem;
+}
+
+.oil-info th,
+.oil-info td {
+  padding: 12px 15px;
+  text-align: left;
+}
+
+.oil-info th {
+  background-color: #27ae60; /* match About theme accent if needed */
+  color: #fff;
+  font-weight: 600;
+}
+
+.oil-info tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.oil-info tr:hover {
+  background-color: #e8f0fe;
+  transition: all 0.3s ease;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .oil-info {
+    padding: 20px 15px;
+  }
+
+  .oil-info table {
+    font-size: 0.9rem;
+  }
+}
+
+
+/* ===================== */
+/* Oil Calculator Section - Card Style like About/Oil Info */
+/* ===================== */
+/* ===================== */
+/* Oil Calculator Section Centered Card */
+/* ===================== */
+#oil-calc-section {
+  background-color: #ffffff; /* white card */
+  border-radius: 10px;
+  padding: 25px;
+  max-width: 500px; /* card width */
+  margin: 40px auto; /* center horizontally with spacing from top/bottom */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  line-height: 1.7;
+  color: #333;
+  text-align: center; /* center text and inputs inside */
+  animation: fadeUp 0.8s forwards;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+/* Headings */
+#oil-calc-section h2 {
+  font-size: 2rem;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+}
+
+/* Inputs and Select */
+#oil-calc-section input,
+#oil-calc-section select {
+  width: 90%;
+  max-width: 300px;
+  padding: 10px 12px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+/* Button */
+#oil-calc-section button {
+  padding: 0.8rem 2rem;
+  background-color: #27ae60;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 10px;
+  transition: background 0.3s ease;
+}
+
+#oil-calc-section button:hover {
+  background-color: #1e874b;
+}
+
+/* Result Box */
+#oil-calc-section .result {
+  margin-top: 15px;
+  font-weight: bold;
+  color: #27ae60;
+  font-size: 1.1rem;
+}
+
+/* Fade Up Animation */
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  #oil-calc-section {
+    width: 90%;
+    padding: 20px 15px;
+  }
+
+  #oil-calc-section input,
+  #oil-calc-section select {
+    width: 95%;
+  }
+}
+
+/* Fade Up Animation already exists */
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  #oil-calc-section {
+    padding: 20px 15px;
+  }
+}
+
+
+/* Fade Up Animation */
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .oil-info {
+    padding: 20px 15px;
+  }
+
+  .oil-info table {
+    font-size: 0.9rem;
+  }
+}
+
+
+/* ===================== */
+/* Info Sections (How It Works / Benefits / Users) */
+/* ===================== */
+.info-section {
+  padding: 4rem 2rem;
+  text-align: center;
+  background-color: #f0f9f5;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.cards .card {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.cards .card i {
+  font-size: 2rem;
+  color: #27ae60;
+}
+
+.cards .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+/* ===================== */
+/* Footer */
+/* ===================== */
+footer {
+  text-align: center;
+  padding: 2rem;
+  background-color: #27ae60;
+  color: #fff;
+  margin-top: 2rem;
+}
+
+/* ===================== */
+/* Responsive Design */
+/* ===================== */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .about-container {
+    flex-direction: column;
+  }
+}
