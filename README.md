@@ -14,3 +14,13 @@ You can upload an image, and the app predicts the seed type.
 ---
 
 ## 📂 Project Structure
+soybean-classifier/
+│
+├── app.py # Flask backend
+├── model.h5 # Trained ML model
+├── requirements.txt # Dependencies
+├── templates/
+│ └── index.html # Frontend HTML
+└── static/
+├── style.css
+└── script.js
